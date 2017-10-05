@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4675661931701298}
   - component: {fileID: 54167607651072810}
+  - component: {fileID: 114300914033096934}
   m_Layer: 0
   m_Name: PrefabPinsel
   m_TagString: Untagged
@@ -125,6 +126,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114300914033096934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210794196255596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933eb7d2e3e24bd44acdc8e07534b23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136180215195715792
 CapsuleCollider:
   m_ObjectHideFlags: 1
