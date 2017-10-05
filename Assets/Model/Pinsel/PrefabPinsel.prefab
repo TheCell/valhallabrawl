@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4675661931701298}
   - component: {fileID: 54167607651072810}
   - component: {fileID: 114300914033096934}
+  - component: {fileID: 114082900130303704}
   m_Layer: 0
   m_Name: PrefabPinsel
   m_TagString: Untagged
@@ -103,6 +104,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33453650350824936
 MeshFilter:
@@ -126,6 +128,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114082900130303704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210794196255596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933eb7d2e3e24bd44acdc8e07534b23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerToKillHexagon: 0.5
+  beforeDestroy: {fileID: 2100000, guid: ad81b8a769f41144baabab7cae83f0a4, type: 2}
 --- !u!114 &114300914033096934
 MonoBehaviour:
   m_ObjectHideFlags: 1
