@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 	private float moveSpeed = 6f; // move speed
 	private float turnSpeed = 180f; // turning speed (degrees/second)
 	private float lerpSpeed = 10f; // smoothing speed
-	private float gravity = 10f; // gravity acceleration
+	public const float _gravity = 10f; // gravity acceleration
 	private bool isGrounded;
 	private float deltaGround = 0.2f; // character is grounded up to this distance
 	private float jumpSpeed = 10f; // vertical jump initial speed
@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
 	private Rigidbody rigidb;
 	private Transform myTransform;
 	public BoxCollider coll;
+	public int player = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -40,7 +41,7 @@ public class Movement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		rigidb.AddForce(-gravity * rigidb.mass * myNormal);
+		rigidb.AddForce(-_gravity * rigidb.mass * myNormal);
 	}
 	
 	// Update is called once per frame
@@ -56,7 +57,17 @@ public class Movement : MonoBehaviour
 
 		Debug.DrawRay(myTransform.position, myTransform.forward, Color.red, 5.0f);
 
-		if (Input.GetButton("Jump"))
+		bool doJump = false;
+		if(player == 0)
+		{
+			doJump = Input.GetButton("Jumpp1");
+		}
+		else if (player == 1)
+		{
+			doJump = Input.GetButton("Jumpp2");
+		}
+
+		if (doJump)
 		{
 			ray = new Ray(myTransform.position, myTransform.forward);
 			
@@ -72,7 +83,15 @@ public class Movement : MonoBehaviour
 			}
 		}
 
-		myTransform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+		if(player == 0)
+		{
+			myTransform.Rotate(0, Input.GetAxis("Horizontalp1") * turnSpeed * Time.deltaTime, 0);
+		}
+		else if (player == 1)
+		{
+			myTransform.Rotate(0, Input.GetAxis("Horizontalp2") * turnSpeed * Time.deltaTime, 0);
+		}
+		
 		ray = new Ray(myTransform.position, -myNormal);
 		if (Physics.Raycast(ray, out hit))
 		{
@@ -90,7 +109,15 @@ public class Movement : MonoBehaviour
 		Vector3 myForward = Vector3.Cross(myTransform.right, myNormal);
 		Quaternion targetRot = Quaternion.LookRotation(myForward, myNormal);
 		myTransform.rotation = Quaternion.Lerp(myTransform.rotation, targetRot, lerpSpeed * Time.deltaTime);
-		myTransform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
+		if (player == 0)
+		{
+			myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeed * Time.deltaTime);
+		}
+		else if (player == 1)
+		{
+			myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeed * Time.deltaTime);
+		}
+		
 	}
 
 	private void jumpToWall(Vector3 point, Vector3 normal)
