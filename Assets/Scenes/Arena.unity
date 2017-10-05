@@ -3324,6 +3324,7 @@ GameObject:
   - component: {fileID: 738906983}
   - component: {fileID: 738906987}
   - component: {fileID: 738906988}
+  - component: {fileID: 738906989}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -3424,6 +3425,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &738906989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 738906982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833ab79e2a9acc240a0dc2ab261302a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinselPrefab: {fileID: 1210794196255596, guid: f6c9cfcdc05cea647b030addaaa0b6e8,
+    type: 2}
+  pinselSpawn: {fileID: 738906986}
+  player: 0
 --- !u!1 &754521323 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100038, guid: 5406786897ff5944f9843fa5985594ca, type: 3}
@@ -4373,6 +4389,7 @@ GameObject:
   - component: {fileID: 977382294}
   - component: {fileID: 977382293}
   - component: {fileID: 977382292}
+  - component: {fileID: 977382298}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -4473,6 +4490,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977382298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977382291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833ab79e2a9acc240a0dc2ab261302a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinselPrefab: {fileID: 1210794196255596, guid: f6c9cfcdc05cea647b030addaaa0b6e8,
+    type: 2}
+  pinselSpawn: {fileID: 977382297}
+  player: 1
 --- !u!1 &978677753 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100254, guid: 5406786897ff5944f9843fa5985594ca, type: 3}

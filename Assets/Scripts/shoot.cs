@@ -6,6 +6,7 @@ public class shoot : MonoBehaviour {
 
     public GameObject pinselPrefab;
     public Transform pinselSpawn;
+	public int player = 0;
 
     // Use this for initialization
     void Start () {
@@ -14,7 +15,11 @@ public class shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
+		if (player == 0 && Input.GetButton("Fire1p1"))
+		{
+			fire();
+		}
+		else if (player == 1 && Input.GetButton("Fire1p2"))
         {
             fire();
         }
