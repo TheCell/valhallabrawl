@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933eb7d2e3e24bd44acdc8e07534b23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerToKillHexagon: 0.5
+  beforeDestroy: {fileID: 2100000, guid: 61aeac4254d5aa74b8e99e4456b934a2, type: 2}
 --- !u!136 &136180215195715792
 CapsuleCollider:
   m_ObjectHideFlags: 1

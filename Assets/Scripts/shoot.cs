@@ -27,6 +27,6 @@ public class shoot : MonoBehaviour {
         //Add velocity to the pinsel
         pinsel.GetComponent<Rigidbody>().velocity = pinsel.transform.forward * 60;
         //Destroy the pinsel
-        Destroy(pinsel, 10.0f);
+        Destroy(pinsel, 5.0f);
     }
 }

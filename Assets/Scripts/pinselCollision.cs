@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class pinselCollision : MonoBehaviour {
-
+    public float timerToKillHexagon = 0.5f;
+    public Material beforeDestroy;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +17,8 @@ public class pinselCollision : MonoBehaviour {
         if (collision.gameObject.tag == "Hexagon")
         {
             Destroy(gameObject);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Renderer>().material = beforeDestroy; 
+            Destroy(collision.gameObject, timerToKillHexagon);
         }
     }
 
