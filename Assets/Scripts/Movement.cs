@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
 		Ray ray;
 		RaycastHit hit;
 
-		Debug.DrawRay(myTransform.position, myTransform.forward, new Color(1.0f, 0.0f, 0.0f));
+		Debug.DrawRay(myTransform.position, myTransform.forward, Color.red, 5.0f);
 
 		if (Input.GetButton("Jump"))
 		{
