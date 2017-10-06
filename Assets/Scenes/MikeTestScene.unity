@@ -423,7 +423,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 40011107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76fce14003fc9d240b5cd4d3eedb8d1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 35eec79f90713bc4d90870b743aa27f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 2032099149}
@@ -10222,11 +10222,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4653261936499380, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.0123115
+      value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 4653261936499380, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -20.68
+      value: -23.2
       objectReference: {fileID: 0}
     - target: {fileID: 4653261936499380, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10251,6 +10251,10 @@ Prefab:
     - target: {fileID: 4653261936499380, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015595915390384, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
@@ -17251,6 +17255,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1384757414801678, guid: 057f8877cef8b644fa2e3e645e5cc963, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 057f8877cef8b644fa2e3e645e5cc963, type: 2}
   m_IsPrefabParent: 0
@@ -18039,7 +18047,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2039786661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76fce14003fc9d240b5cd4d3eedb8d1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 35eec79f90713bc4d90870b743aa27f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 24528003}
