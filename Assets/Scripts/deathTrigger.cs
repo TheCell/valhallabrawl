@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class deathTrigger : MonoBehaviour {
-     public float timerToDestroyPlayer = 2f;
-
+    public float timerToDestroyPlayer = 2f;
+    private GameObject[] players;
      void OnTriggerExit(Collider collision)
       {
          if (collision.gameObject.tag == "Player")
           {
-            Debug.Log(collision.gameObject.GetComponent<Movement>().player);
-              Destroy(collision.gameObject, timerToDestroyPlayer);
+                players = GameObject.FindGameObjectsWithTag("Player");
+            foreach(GameObject player in players)
+            {
+                if(player != collision.gameObject)
+                {
+                    player.GetComponent<playerUI>().increasePointsCounter();
+                }
+            }
+                Destroy(collision.gameObject, timerToDestroyPlayer);
           }
       }
     // Use this for initialization
