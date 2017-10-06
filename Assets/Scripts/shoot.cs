@@ -26,11 +26,11 @@ public class shoot : MonoBehaviour
 			canFire = true;
 		}
 		
-		if (player == 0 && Input.GetButton("Fire1p1") && canFire)
+		if (player == 0 && ( Input.GetButton("Fire1p1") || Input.GetAxis("Fire1p1") > 0.9f) && canFire)
 		{
 			fire();
 		}
-		else if (player == 1 && Input.GetButton("Fire1p2") && canFire)
+		else if (player == 1 && ( Input.GetButton("Fire1p2") || Input.GetAxis("Fire1p2") > 0.9f) && canFire)
 		{
 			fire();
 		}

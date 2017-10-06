@@ -18,6 +18,14 @@ public class Movement : MonoBehaviour
 	private bool jumping = false; // flag "I'm jumping to wall";
 	private float vertSpeed = 0; // vertical jump current speed
 
+	// Camera Variables
+	private Vector3 cameraOffset;
+	private Vector3 lookAtPosition;
+	private float cameraLastUsed;
+
+	// Game Objects
+	public GameObject playerObject;
+	public GameObject cameraObject;
 	private Rigidbody rigidb;
 	private Transform myTransform;
 	public BoxCollider coll;
@@ -31,6 +39,9 @@ public class Movement : MonoBehaviour
 
 		myNormal = transform.up; // normal starts as character up direction 
 		myTransform = transform;
+		cameraOffset = cameraObject.transform.position - playerObject.transform.position;
+		lookAtPosition = playerObject.transform.position + new Vector3(0, 0, 10);
+		cameraLastUsed = Time.realtimeSinceStartup;
 
 		if (rigidb)
 		{
@@ -85,7 +96,28 @@ public class Movement : MonoBehaviour
 
 		if(player == 0)
 		{
+			// move
 			myTransform.Rotate(0, Input.GetAxis("Horizontalp1") * turnSpeed * Time.deltaTime, 0);
+
+			// camera
+			/*
+			if (Input.GetAxis("VerticalViewp1") == 0 && Input.GetAxis("HorizontalViewp1") == 0)
+			{
+				cameraObject.transform.position = playerObject.transform.position + cameraOffset;
+			}
+			*/
+			// set camera behind cube
+			// cameraObject.transform.position = playerObject.transform.position + cameraOffset;
+
+			// camera rotation
+			cameraObject.transform.Translate(-cameraOffset);
+			
+			cameraObject.transform.Rotate(Input.GetAxis("VerticalViewp1"), Input.GetAxis("HorizontalViewp1"), 0);
+			
+			cameraObject.transform.Translate(cameraOffset);
+
+			// cameraObject.transform.LookAt(playerObject.transform.position);
+			// cameraObject.transform.LookAt(lookAtPosition);
 		}
 		else if (player == 1)
 		{
