@@ -96,24 +96,23 @@ public class Movement : MonoBehaviour
 
 		if(player == 0)
 		{
-			// move
+			// move character
 			myTransform.Rotate(0, Input.GetAxis("Horizontalp1") * turnSpeed * Time.deltaTime, 0);
 
-			// camera
+			// update camera position relative to player
+			// set camera behind cube
+			cameraObject.transform.position = playerObject.transform.position + cameraOffset;
+
 			/*
 			if (Input.GetAxis("VerticalViewp1") == 0 && Input.GetAxis("HorizontalViewp1") == 0)
 			{
 				cameraObject.transform.position = playerObject.transform.position + cameraOffset;
 			}
 			*/
-			// set camera behind cube
-			// cameraObject.transform.position = playerObject.transform.position + cameraOffset;
 
 			// camera rotation
 			cameraObject.transform.Translate(-cameraOffset);
-			
 			cameraObject.transform.Rotate(Input.GetAxis("VerticalViewp1"), Input.GetAxis("HorizontalViewp1"), 0);
-			
 			cameraObject.transform.Translate(cameraOffset);
 
 			// cameraObject.transform.LookAt(playerObject.transform.position);
@@ -121,9 +120,29 @@ public class Movement : MonoBehaviour
 		}
 		else if (player == 1)
 		{
+			// move character
 			myTransform.Rotate(0, Input.GetAxis("Horizontalp2") * turnSpeed * Time.deltaTime, 0);
+
+			// update camera position relative to player
+			// set camera behind cube
+			cameraObject.transform.position = playerObject.transform.position + cameraOffset;
+
+			/*
+			if (Input.GetAxis("VerticalViewp1") == 0 && Input.GetAxis("HorizontalViewp1") == 0)
+			{
+				cameraObject.transform.position = playerObject.transform.position + cameraOffset;
+			}
+			*/
+
+			// camera rotation
+			cameraObject.transform.Translate(-cameraOffset);
+			cameraObject.transform.Rotate(Input.GetAxis("VerticalViewp2"), Input.GetAxis("HorizontalViewp2"), 0);
+			cameraObject.transform.Translate(cameraOffset);
+
+			// cameraObject.transform.LookAt(playerObject.transform.position);
+			// cameraObject.transform.LookAt(lookAtPosition);
 		}
-		
+
 		ray = new Ray(myTransform.position, -myNormal);
 		if (Physics.Raycast(ray, out hit))
 		{
