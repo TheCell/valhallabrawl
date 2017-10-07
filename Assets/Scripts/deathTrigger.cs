@@ -15,24 +15,12 @@ public class deathTrigger : MonoBehaviour {
             {
                 if (player != collision.gameObject)
                 {
+                    Debug.Log(player);
                     player.GetComponent<playerUI>().increasePointsCounter(player.GetComponent<Movement>().player);
                 }
             }
             SceneManager.LoadScene("MikeTestScene", LoadSceneMode.Single);
-        }
-          /*  GameObject[] players = GameObject.FindGameObjectsWithTag("Player2");
-            players[0].GetComponent<player2UI>().increasePointsCounter();
-            //Don't destroy, make death animation
-            SceneManager.LoadScene("MikeTestScene", LoadSceneMode.Single);*/
-            // Destroy(collision.gameObject, timerToDestroyPlayer);
-      //  }
-       /* else if(collision.gameObject.tag == "Player2")
-        {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player1");
-            Debug.Log(players[0].GetComponent<player1UI>().points.text);
-            players[0].GetComponent<player1UI>().increasePointsCounter();
-            //SceneManager.LoadScene("MikeTestScene", LoadSceneMode.Single);
-        }*/
+        }         
       }
     // Use this for initialization
     void Start () {

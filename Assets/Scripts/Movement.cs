@@ -22,15 +22,16 @@ public class Movement : MonoBehaviour
 	private Vector3 cameraOffset;
 	private Vector3 lookAtPosition;
 	private float cameraLastUsed;
+    private float cameraRotationSpeed = 2f;
 
-	// Game Objects
-	public GameObject playerObject;
+    // Game Objects
+    public GameObject playerObject;
 	public GameObject cameraObject;
 	private Rigidbody rigidb;
 	private Transform myTransform;
 	public BoxCollider coll;
 	public int player = 0;
-
+    private Vector3 playerInput = new Vector3(0, 0, 0);
 	// Use this for initialization
 	void Start ()
 	{
@@ -39,7 +40,6 @@ public class Movement : MonoBehaviour
 
 		myNormal = transform.up; // normal starts as character up direction 
 		myTransform = transform;
-		cameraOffset = cameraObject.transform.position - playerObject.transform.position;
 		lookAtPosition = playerObject.transform.position + new Vector3(0, 0, 10);
 		cameraLastUsed = Time.realtimeSinceStartup;
 
@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
 		Ray ray;
 		RaycastHit hit;
 
-		Debug.DrawRay(myTransform.position, myTransform.forward, Color.red, 5.0f);
+      //  Debug.DrawRay(myTransform.position, myTransform.forward, Color.red, 5.0f);
 
 		bool doJump = false;
 		if(player == 0)
@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
 
 			// update camera position relative to player
 			// set camera behind cube
-			cameraObject.transform.position = playerObject.transform.position + cameraOffset;
+			//cameraObject.transform.position = playerObject.transform.position;
 
 			/*
 			if (Input.GetAxis("VerticalViewp1") == 0 && Input.GetAxis("HorizontalViewp1") == 0)
@@ -111,9 +111,9 @@ public class Movement : MonoBehaviour
 			*/
 
 			// camera rotation
-			cameraObject.transform.Translate(-cameraOffset);
+		/*	cameraObject.transform.Translate(-cameraOffset);
 			cameraObject.transform.Rotate(Input.GetAxis("VerticalViewp1"), Input.GetAxis("HorizontalViewp1"), 0);
-			cameraObject.transform.Translate(cameraOffset);
+			cameraObject.transform.Translate(cameraOffset);*/
 
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
@@ -125,7 +125,7 @@ public class Movement : MonoBehaviour
 
 			// update camera position relative to player
 			// set camera behind cube
-			cameraObject.transform.position = playerObject.transform.position + cameraOffset;
+			//cameraObject.transform.position = playerObject.transform.position;
 
 			/*
 			if (Input.GetAxis("VerticalViewp1") == 0 && Input.GetAxis("HorizontalViewp1") == 0)
@@ -133,11 +133,7 @@ public class Movement : MonoBehaviour
 				cameraObject.transform.position = playerObject.transform.position + cameraOffset;
 			}
 			*/
-
-			// camera rotation
-			cameraObject.transform.Translate(-cameraOffset);
-			cameraObject.transform.Rotate(Input.GetAxis("VerticalViewp2"), Input.GetAxis("HorizontalViewp2"), 0);
-			cameraObject.transform.Translate(cameraOffset);
+            
 
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
@@ -155,19 +151,27 @@ public class Movement : MonoBehaviour
 			// assume usual ground normal to avoid "falling forever"
 			surfaceNormal = Vector3.up;
 		}
-
 		myNormal = Vector3.Lerp(myNormal, surfaceNormal, lerpSpeed * Time.deltaTime);
 		Vector3 myForward = Vector3.Cross(myTransform.right, myNormal);
 		Quaternion targetRot = Quaternion.LookRotation(myForward, myNormal);
 		myTransform.rotation = Quaternion.Lerp(myTransform.rotation, targetRot, lerpSpeed * Time.deltaTime);
-		if (player == 0)
+
+        if (player == 0)
 		{
 			myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeed * Time.deltaTime);
-		}
+            //turn Camera Vertical
+            cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
+            //turn Camera/Player Horizontal
+            myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp1") * turnSpeed * Time.deltaTime, 0);
+        }
 		else if (player == 1)
 		{
 			myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeed * Time.deltaTime);
-		}
+            //turn Camera Vertical
+            cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
+            //turn Camera/Player Horizontal
+            myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp2") * turnSpeed * Time.deltaTime, 0);
+        }
 		
 	}
 
