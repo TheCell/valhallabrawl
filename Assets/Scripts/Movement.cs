@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
 	public const float _gravity = 10f; // gravity acceleration
 	private bool isGrounded;
 	private float deltaGround = 0.2f; // character is grounded up to this distance
-	private float jumpSpeed = 10f; // vertical jump initial speed
+	private float jumpSpeed = 5f; // vertical jump initial speed
 	private float jumpRange = 10f; // range to detect target wall
 	private Vector3 surfaceNormal; // current surface normal
 	private Vector3 myNormal; // character normal
@@ -23,9 +23,11 @@ public class Movement : MonoBehaviour
 	private Vector3 lookAtPosition;
 	private float cameraLastUsed;
     private float cameraRotationSpeed = 2f;
+	public GameObject lookAtPositionObject;
+	private int cameraAccelerationSpeed = 7;
 
-    // Game Objects
-    public GameObject playerObject;
+	// Game Objects
+	public GameObject playerObject;
 	public GameObject cameraObject;
 	private Rigidbody rigidb;
 	private Transform myTransform;
@@ -81,8 +83,8 @@ public class Movement : MonoBehaviour
 		if (doJump)
 		{
 			ray = new Ray(myTransform.position, myTransform.forward);
-			
-			
+
+			/*
 			if (Physics.Raycast(ray, out hit, jumpRange))
 			{
 				jumpToWall(hit.point, hit.normal);
@@ -92,6 +94,8 @@ public class Movement : MonoBehaviour
 			{
 				rigidb.velocity += jumpSpeed * myNormal;
 			}
+			*/
+			rigidb.velocity += jumpSpeed * myNormal;
 		}
 
 		if(player == 0)
@@ -111,9 +115,11 @@ public class Movement : MonoBehaviour
 			*/
 
 			// camera rotation
-		/*	cameraObject.transform.Translate(-cameraOffset);
+			/*
+			cameraObject.transform.Translate(-cameraOffset);
 			cameraObject.transform.Rotate(Input.GetAxis("VerticalViewp1"), Input.GetAxis("HorizontalViewp1"), 0);
-			cameraObject.transform.Translate(cameraOffset);*/
+			cameraObject.transform.Translate(cameraOffset);
+			*/
 
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
@@ -133,7 +139,6 @@ public class Movement : MonoBehaviour
 				cameraObject.transform.position = playerObject.transform.position + cameraOffset;
 			}
 			*/
-            
 
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
