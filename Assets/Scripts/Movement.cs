@@ -71,18 +71,18 @@ public class Movement : MonoBehaviour
       //  Debug.DrawRay(myTransform.position, myTransform.forward, Color.red, 5.0f);
 
 		bool doJump = false;
-		if(player == 0)
+		if(player == 0 && isGrounded)
 		{
 			doJump = Input.GetButton("Jumpp1");
 		}
-		else if (player == 1)
+		else if (player == 1 && isGrounded)
 		{
 			doJump = Input.GetButton("Jumpp2");
 		}
 
 		if (doJump)
 		{
-			ray = new Ray(myTransform.position, myTransform.forward);
+			// ray = new Ray(myTransform.position, myTransform.forward);
 
 			/*
 			if (Physics.Raycast(ray, out hit, jumpRange))
@@ -123,6 +123,15 @@ public class Movement : MonoBehaviour
 
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
+
+			myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeed * Time.deltaTime);
+			//turn Camera Vertical
+			cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
+			//turn Camera/Player Horizontal
+			if (Input.GetAxis("Horizontalp1") == 0)
+			{
+				myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp1") * turnSpeed * Time.deltaTime, 0);
+			}
 		}
 		else if (player == 1)
 		{
@@ -142,6 +151,15 @@ public class Movement : MonoBehaviour
 
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
+
+			myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeed * Time.deltaTime);
+			//turn Camera Vertical
+			cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
+			//turn Camera/Player Horizontal
+			if (Input.GetAxis("Horizontalp2") == 0)
+			{
+				myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp2") * turnSpeed * Time.deltaTime, 0);
+			}
 		}
 
 		ray = new Ray(myTransform.position, -myNormal);
@@ -156,28 +174,11 @@ public class Movement : MonoBehaviour
 			// assume usual ground normal to avoid "falling forever"
 			surfaceNormal = Vector3.up;
 		}
+
 		myNormal = Vector3.Lerp(myNormal, surfaceNormal, lerpSpeed * Time.deltaTime);
 		Vector3 myForward = Vector3.Cross(myTransform.right, myNormal);
 		Quaternion targetRot = Quaternion.LookRotation(myForward, myNormal);
 		myTransform.rotation = Quaternion.Lerp(myTransform.rotation, targetRot, lerpSpeed * Time.deltaTime);
-
-        if (player == 0)
-		{
-			myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeed * Time.deltaTime);
-            //turn Camera Vertical
-            cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
-            //turn Camera/Player Horizontal
-            myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp1") * turnSpeed * Time.deltaTime, 0);
-        }
-		else if (player == 1)
-		{
-			myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeed * Time.deltaTime);
-            //turn Camera Vertical
-            cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
-            //turn Camera/Player Horizontal
-            myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp2") * turnSpeed * Time.deltaTime, 0);
-        }
-		
 	}
 
 	private void jumpToWall(Vector3 point, Vector3 normal)
