@@ -6,6 +6,7 @@ public class shoot : MonoBehaviour
 {
     public GameObject pinselPrefab;
     public Transform pinselSpawn;
+	public GameObject playerCamera;
 	public int player = 0;
 	public float shootCooldownSeconds = 100.0f;
 	private float lastShot = 0.0f;
@@ -40,13 +41,20 @@ public class shoot : MonoBehaviour
 		canFire = false;
 		lastShot = Time.realtimeSinceStartup;
 
-		GameObject pinsel = (GameObject) Instantiate (
+		/*
+		GameObject pinsel = (GameObject)Instantiate(
 			pinselPrefab,
 			pinselSpawn.position,
 			pinselSpawn.rotation);
+		*/
 
-        //Add velocity to the pinsel
-        pinsel.GetComponent<Rigidbody>().velocity = pinsel.transform.forward * 60;
+		GameObject pinsel = (GameObject)Instantiate(
+			pinselPrefab,
+			pinselSpawn.position,
+			playerCamera.transform.rotation);
+
+		//Add velocity to the pinsel
+		pinsel.GetComponent<Rigidbody>().velocity = pinsel.transform.forward * 60;
         //Destroy the pinsel
         Destroy(pinsel, 5.0f);
     }
