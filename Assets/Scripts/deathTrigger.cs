@@ -19,7 +19,7 @@ public class deathTrigger : MonoBehaviour {
                     player.GetComponent<playerUI>().increasePointsCounter(player.GetComponent<Movement>().player);
                 }
             }
-            SceneManager.LoadScene("MikeTestScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("Arena", LoadSceneMode.Single);
         }         
       }
     // Use this for initialization
