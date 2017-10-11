@@ -16,11 +16,17 @@ public class pinselCollision : MonoBehaviour {
         // Vector3 pos = contact.point;
         if (collision.gameObject.tag == "Hexagon")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             collision.gameObject.GetComponent<Renderer>().material = beforeDestroy; 
             Destroy(collision.gameObject, timerToKillHexagon);
+			gameObject.SetActive(false);
         }
-    }
+		else if (collision.gameObject.tag == "boundary")
+		{
+			gameObject.SetActive(false);
+			print("pinsel hat deathsphere erreicht");
+		}
+	}
 
     // Update is called once per frame
     void Update () {

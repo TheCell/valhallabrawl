@@ -7,6 +7,8 @@ public class shoot : MonoBehaviour
     public GameObject pinselPrefab;
     public Transform pinselSpawn;
 	public GameObject playerCamera;
+	private List<GameObject> pinselPool = new List<GameObject>();
+	private List<GameObject>.Enumerator pinselEnumerator;
 	public int player = 0;
 	public float shootCooldownSeconds = 100.0f;
 	private float lastShot = 0.0f;
@@ -16,6 +18,16 @@ public class shoot : MonoBehaviour
     void Start ()
 	{
 		lastShot = Time.realtimeSinceStartup;
+
+		// prefill Pool
+		for (int i = 0; i < 20; i++)
+		{
+			GameObject pinsel = (GameObject)Instantiate(pinselPrefab);
+			pinsel.SetActive(false);
+			pinselPool.Add(pinsel);
+		}
+
+		pinselEnumerator = pinselPool.GetEnumerator();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +48,7 @@ public class shoot : MonoBehaviour
 			fire();
 		}
     }
+
     private void fire()
     {
 		canFire = false;
@@ -48,14 +61,32 @@ public class shoot : MonoBehaviour
 			pinselSpawn.rotation);
 		*/
 
+		/*
 		GameObject pinsel = (GameObject)Instantiate(
 			pinselPrefab,
 			pinselSpawn.position,
 			playerCamera.transform.rotation);
+		*/
 
-		//Add velocity to the pinsel
-		pinsel.GetComponent<Rigidbody>().velocity = pinsel.transform.forward * 60;
-        //Destroy the pinsel
-        Destroy(pinsel, 5.0f);
-    }
+		if (!pinselEnumerator.MoveNext())
+		{
+			pinselEnumerator = pinselPool.GetEnumerator();
+			pinselEnumerator.MoveNext();
+			print("was last");
+		}
+		if (pinselEnumerator.Current != null)
+		{
+			GameObject currentPinsel = pinselEnumerator.Current;
+			currentPinsel.transform.position = pinselSpawn.position;
+			currentPinsel.transform.rotation = playerCamera.transform.rotation;
+			currentPinsel.SetActive(true);
+
+			//Add velocity to the pinsel
+			//pinsel.GetComponent<Rigidbody>().velocity = pinsel.transform.forward * 60;
+			currentPinsel.GetComponent<Rigidbody>().velocity = currentPinsel.transform.forward * 60;
+
+			//Destroy the pinsel
+			//Destroy(pinsel, 5.0f);
+		}
+	}
 }

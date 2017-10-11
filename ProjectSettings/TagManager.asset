@@ -9,6 +9,7 @@ TagManager:
   - Spawn2
   - Player1
   - Player2
+  - boundary
   layers:
   - Default
   - TransparentFX
