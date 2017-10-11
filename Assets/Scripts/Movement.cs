@@ -26,6 +26,10 @@ public class Movement : MonoBehaviour
     private float cameraRotationSpeed = 2f;
 	public GameObject lookAtPositionObject;
 	private int cameraAccelerationSpeed = 7;
+	private float minRotationDegree = -45;
+	private float maxRotationDegree = 45;
+	private float minRotation = -0.6f;
+	private float maxRotation = 0.6f;
 
 	// Game Objects
 	public GameObject playerObject;
@@ -133,9 +137,47 @@ public class Movement : MonoBehaviour
 			{
 				myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeedInJump * Time.deltaTime);
 			}
-			
+
 			//turn Camera Vertical
-			cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
+			// apply rotation
+			
+			// print(cameraObject.transform.localRotation.x + " " + (maxRotationDegree + Input.GetAxis("VerticalViewp1") * cameraRotationSpeed));
+			/*
+			if ((cameraObject.transform.rotation.x < (maxRotation + Input.GetAxis("VerticalViewp1") * cameraRotationSpeed)) && (cameraObject.transform.rotation.x > (minRotation + Input.GetAxis("VerticalViewp1") * cameraRotationSpeed)))
+			{
+				cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
+			}
+			*/
+			
+			// limit looking up and down
+			if (cameraObject.transform.localRotation.x < maxRotation && Input.GetAxis("VerticalViewp1") > 0)
+			{
+				cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
+			}
+			else if (cameraObject.transform.localRotation.x > minRotation && Input.GetAxis("VerticalViewp1") < 0)
+			{
+				cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
+			}
+			
+			/*
+			float clampedXRotation = Mathf.Clamp(cameraObject.transform.rotation.x, minRotationDegree, maxRotationDegree);
+			cameraObject.transform.rotation.x = clampedXRotation;
+			*/
+
+			//print(cameraObject.transform.rotation.x);
+
+			// check if rotation is not too far and fix if necessary
+			/*
+			Vector3 currentPlayerRotation = myTransform.rotation.eulerAngles;
+			Vector3 currentUpVector = myTransform.up;
+			Quaternion test;
+			
+			Vector3 currentCameraRotation = cameraObject.transform.rotation.eulerAngles;
+			print(currentPlayerRotation + " " + currentCameraRotation);
+			currentCameraRotation.z = Mathf.Clamp(currentPlayerRotation.y, minRotationDegree, maxRotationDegree);
+			cameraObject.transform.rotation = Quaternion.Euler(currentCameraRotation);
+			*/
+
 			//turn Camera/Player Horizontal
 			if (Input.GetAxis("Horizontalp1") == 0)
 			{
@@ -171,7 +213,16 @@ public class Movement : MonoBehaviour
 			}
 
 			//turn Camera Vertical
-			cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
+			// limit looking up and down
+			if (cameraObject.transform.localRotation.x < maxRotation && Input.GetAxis("VerticalViewp2") > 0)
+			{
+				cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
+			}
+			else if (cameraObject.transform.localRotation.x > minRotation && Input.GetAxis("VerticalViewp2") < 0)
+			{
+				cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
+			}
+			
 			//turn Camera/Player Horizontal
 			if (Input.GetAxis("Horizontalp2") == 0)
 			{
@@ -195,6 +246,7 @@ public class Movement : MonoBehaviour
 		myNormal = Vector3.Lerp(myNormal, surfaceNormal, lerpSpeed * Time.deltaTime);
 		Vector3 myForward = Vector3.Cross(myTransform.right, myNormal);
 		Quaternion targetRot = Quaternion.LookRotation(myForward, myNormal);
+
 		myTransform.rotation = Quaternion.Lerp(myTransform.rotation, targetRot, lerpSpeed * Time.deltaTime);
 	}
 
