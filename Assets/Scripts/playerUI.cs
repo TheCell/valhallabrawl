@@ -44,4 +44,20 @@ public class playerUI : MonoBehaviour {
             points.text = "Punkte: " + counterPlayer2.ToString();
         }        
     }
+
+	public int hasPlayerWon()
+	{
+		int winner = -1;
+
+		if (counterPlayer1 >= 3)
+		{
+			winner = 1;
+		}
+		else if (counterPlayer2 >= 3)
+		{
+			winner = 2;
+		}
+
+		return winner;
+	}
 }
