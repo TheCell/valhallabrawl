@@ -145,7 +145,8 @@ public class Movement : MonoBehaviour
 		else if (player == 1)
 		{
 			// move character
-			myTransform.Rotate(0, Input.GetAxis("Horizontalp2") * turnSpeed * Time.deltaTime, 0);
+			//myTransform.Rotate(0, Input.GetAxis("Horizontalp2") * turnSpeed * Time.deltaTime, 0);
+
 			if (isGrounded)
 			{
 				// forward / backwards
