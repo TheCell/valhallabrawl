@@ -3436,6 +3436,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.66
       objectReference: {fileID: 0}
+    - target: {fileID: 4537340388755342, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}
   m_IsPrefabParent: 0
@@ -4501,6 +4505,10 @@ Prefab:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 637472778}
+    - target: {fileID: 4647634218796132, guid: 057f8877cef8b644fa2e3e645e5cc963, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 057f8877cef8b644fa2e3e645e5cc963, type: 2}
   m_IsPrefabParent: 0

@@ -106,48 +106,22 @@ public class Movement : MonoBehaviour
 		if(player == 0)
 		{
 			// move character
-			myTransform.Rotate(0, Input.GetAxis("Horizontalp1") * turnSpeed * Time.deltaTime, 0);
-
-			// update camera position relative to player
-			// set camera behind cube
-			//cameraObject.transform.position = playerObject.transform.position;
-
-			/*
-			if (Input.GetAxis("VerticalViewp1") == 0 && Input.GetAxis("HorizontalViewp1") == 0)
-			{
-				cameraObject.transform.position = playerObject.transform.position + cameraOffset;
-			}
-			*/
-
-			// camera rotation
-			/*
-			cameraObject.transform.Translate(-cameraOffset);
-			cameraObject.transform.Rotate(Input.GetAxis("VerticalViewp1"), Input.GetAxis("HorizontalViewp1"), 0);
-			cameraObject.transform.Translate(cameraOffset);
-			*/
-
-			// cameraObject.transform.LookAt(playerObject.transform.position);
-			// cameraObject.transform.LookAt(lookAtPosition);
-
+			//myTransform.Rotate(0, Input.GetAxis("Horizontalp1") * turnSpeed * Time.deltaTime, 0);
+			
 			if (isGrounded)
 			{
+				// forward / backwards
 				myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeed * Time.deltaTime);
+				// strive 
+				myTransform.Translate(Input.GetAxis("Horizontalp1") * moveSpeed * Time.deltaTime, 0, 0);
 			}
 			else
 			{
+				// forward / backwards
 				myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeedInJump * Time.deltaTime);
+				// strive 
+				myTransform.Translate(Input.GetAxis("Horizontalp1") * moveSpeedInJump * Time.deltaTime, 0, 0);
 			}
-
-			//turn Camera Vertical
-			// apply rotation
-			
-			// print(cameraObject.transform.localRotation.x + " " + (maxRotationDegree + Input.GetAxis("VerticalViewp1") * cameraRotationSpeed));
-			/*
-			if ((cameraObject.transform.rotation.x < (maxRotation + Input.GetAxis("VerticalViewp1") * cameraRotationSpeed)) && (cameraObject.transform.rotation.x > (minRotation + Input.GetAxis("VerticalViewp1") * cameraRotationSpeed)))
-			{
-				cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
-			}
-			*/
 			
 			// limit looking up and down
 			if (cameraObject.transform.localRotation.x < maxRotation && Input.GetAxis("VerticalViewp1") > 0)
@@ -158,58 +132,33 @@ public class Movement : MonoBehaviour
 			{
 				cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
 			}
-			
-			/*
-			float clampedXRotation = Mathf.Clamp(cameraObject.transform.rotation.x, minRotationDegree, maxRotationDegree);
-			cameraObject.transform.rotation.x = clampedXRotation;
-			*/
-
-			//print(cameraObject.transform.rotation.x);
-
-			// check if rotation is not too far and fix if necessary
-			/*
-			Vector3 currentPlayerRotation = myTransform.rotation.eulerAngles;
-			Vector3 currentUpVector = myTransform.up;
-			Quaternion test;
-			
-			Vector3 currentCameraRotation = cameraObject.transform.rotation.eulerAngles;
-			print(currentPlayerRotation + " " + currentCameraRotation);
-			currentCameraRotation.z = Mathf.Clamp(currentPlayerRotation.y, minRotationDegree, maxRotationDegree);
-			cameraObject.transform.rotation = Quaternion.Euler(currentCameraRotation);
-			*/
 
 			//turn Camera/Player Horizontal
+			/*
 			if (Input.GetAxis("Horizontalp1") == 0)
 			{
-				myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp1") * turnSpeed * Time.deltaTime, 0);
+				myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp1") * turnSpeed * Time.deltaTime, 0);	
 			}
+			*/
+			myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp1") * turnSpeed * Time.deltaTime, 0);
 		}
 		else if (player == 1)
 		{
 			// move character
 			myTransform.Rotate(0, Input.GetAxis("Horizontalp2") * turnSpeed * Time.deltaTime, 0);
-
-			// update camera position relative to player
-			// set camera behind cube
-			//cameraObject.transform.position = playerObject.transform.position;
-
-			/*
-			if (Input.GetAxis("VerticalViewp1") == 0 && Input.GetAxis("HorizontalViewp1") == 0)
-			{
-				cameraObject.transform.position = playerObject.transform.position + cameraOffset;
-			}
-			*/
-
-			// cameraObject.transform.LookAt(playerObject.transform.position);
-			// cameraObject.transform.LookAt(lookAtPosition);
-
 			if (isGrounded)
 			{
+				// forward / backwards
 				myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeed * Time.deltaTime);
+				// strive 
+				myTransform.Translate(Input.GetAxis("Horizontalp2") * moveSpeed * Time.deltaTime, 0, 0);
 			}
 			else
 			{
+				// forward / backwards
 				myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeedInJump * Time.deltaTime);
+				// strive 
+				myTransform.Translate(Input.GetAxis("Horizontalp2") * moveSpeedInJump * Time.deltaTime, 0, 0);
 			}
 
 			//turn Camera Vertical
@@ -224,10 +173,13 @@ public class Movement : MonoBehaviour
 			}
 			
 			//turn Camera/Player Horizontal
+			/*
 			if (Input.GetAxis("Horizontalp2") == 0)
 			{
 				myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp2") * turnSpeed * Time.deltaTime, 0);
 			}
+			*/
+			myTransform.Rotate(0, -Input.GetAxis("HorizontalViewp2") * turnSpeed * Time.deltaTime, 0);
 		}
 
 		ray = new Ray(myTransform.position, -myNormal);
