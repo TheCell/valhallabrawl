@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 	private float moveSpeed = 6f; // move speed
+	private float moveSpeedInJump = 10f; // move speed
 	private float turnSpeed = 180f; // turning speed (degrees/second)
 	private float lerpSpeed = 10f; // smoothing speed
 	public const float _gravity = 10f; // gravity acceleration
@@ -124,7 +125,15 @@ public class Movement : MonoBehaviour
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
 
-			myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeed * Time.deltaTime);
+			if (isGrounded)
+			{
+				myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeed * Time.deltaTime);
+			}
+			else
+			{
+				myTransform.Translate(0, 0, Input.GetAxis("Verticalp1") * moveSpeedInJump * Time.deltaTime);
+			}
+			
 			//turn Camera Vertical
 			cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
 			//turn Camera/Player Horizontal
@@ -152,7 +161,15 @@ public class Movement : MonoBehaviour
 			// cameraObject.transform.LookAt(playerObject.transform.position);
 			// cameraObject.transform.LookAt(lookAtPosition);
 
-			myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeed * Time.deltaTime);
+			if (isGrounded)
+			{
+				myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeed * Time.deltaTime);
+			}
+			else
+			{
+				myTransform.Translate(0, 0, Input.GetAxis("Verticalp2") * moveSpeedInJump * Time.deltaTime);
+			}
+
 			//turn Camera Vertical
 			cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
 			//turn Camera/Player Horizontal
