@@ -60,4 +60,12 @@ public class playerUI : MonoBehaviour {
 
 		return winner;
 	}
+
+	public bool resetScore()
+	{
+		counterPlayer1 = 0;
+		counterPlayer2 = 0;
+
+		return counterPlayer1 == 0 && counterPlayer2 == 0;
+	}
 }

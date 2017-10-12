@@ -19,8 +19,12 @@ public class displayWinner : MonoBehaviour {
 			{
 				winnerNumber = player.GetComponent<playerUI>().hasPlayerWon();
 			}
+
+			player.GetComponent<playerUI>().resetScore();
 		}
-			winnerIs.text = "Winner is: " + winnerNumber;
+
+		winnerIs.text = "Winner is: " + winnerNumber;
+			
 	}
 	
 	// Update is called once per frame
