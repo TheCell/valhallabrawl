@@ -159,8 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933eb7d2e3e24bd44acdc8e07534b23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerToKillHexagon: 0.5
+  timerBeforeKill: 0.5
   beforeDestroy: {fileID: 2100000, guid: ad81b8a769f41144baabab7cae83f0a4, type: 2}
+  afterDestroy: {fileID: 2100000, guid: f2e10600c5e470848b1cd9bd434564d0, type: 2}
 --- !u!136 &136236402095042422
 CapsuleCollider:
   m_ObjectHideFlags: 1

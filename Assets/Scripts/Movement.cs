@@ -184,6 +184,8 @@ public class Movement : MonoBehaviour
 		}
 
 		ray = new Ray(myTransform.position, -myNormal);
+		Debug.DrawRay(ray.origin, ray.direction * 5, Color.red);
+
 		if (Physics.Raycast(ray, out hit))
 		{
 			isGrounded = hit.distance <= distGround + deltaGround;
