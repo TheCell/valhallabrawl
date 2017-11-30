@@ -9,7 +9,7 @@ public class PlaySound : MonoBehaviour
 
 	void Start()
 	{
-		StartCoroutine(playStartSoundAndLoopAfterwards());
+		//StartCoroutine(playStartSoundAndLoopAfterwards());
 	}
 
 	IEnumerator playStartSoundAndLoopAfterwards()
