@@ -13,11 +13,16 @@ public class shoot : MonoBehaviour
 	public float shootCooldownSeconds = 100.0f;
 	private float lastShot = 0.0f;
 	private bool canFire = true;
+    private string controllerNumber;
 
     // Use this for initialization
     void Start ()
 	{
-		lastShot = Time.realtimeSinceStartup;
+        foreach (string bla in Input.GetJoystickNames())
+        {
+            Debug.Log(bla);
+        }
+        lastShot = Time.realtimeSinceStartup;
 
 		// prefill Pool
 		for (int i = 0; i < 20; i++)
@@ -33,20 +38,38 @@ public class shoot : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		float timeDelta = (Time.realtimeSinceStartup - lastShot - shootCooldownSeconds);
+        if (player ==1 && controllerNumber == null && (Input.GetButton("Fire1p1")))
+        {
+            controllerNumber = "p1";
+            Debug.Log(controllerNumber);
+        }
+        else if (player == 0 &&controllerNumber == null && (Input.GetButton("Fire1p2")))
+        {
+            controllerNumber = "p2";
+            Debug.Log(controllerNumber);
+        }
+        //Debug.Log(controllerNumber+"  "+player);
+        float timeDelta = (Time.realtimeSinceStartup - lastShot - shootCooldownSeconds);
 		if (timeDelta > 0.0f)
 		{
 			canFire = true;
 		}
-		
-		if (player == 0 && ( Input.GetButton("Fire1p1") || Input.GetAxis("Fire1p1") > 0.9f) && canFire)
+
+        if ((Input.GetButton("Fire1" + controllerNumber) || Mathf.Abs(Input.GetAxis("Fire1" + controllerNumber)) > 0.5f) && canFire)
+        {
+            fire();
+        }
+
+        /*
+		if (player == 0 && ( Input.GetButton("Fire1p1") || Mathf.Abs(Input.GetAxis("Fire1p1")) > 0.5f) && canFire)
 		{
 			fire();
 		}
-		else if (player == 1 && ( Input.GetButton("Fire1p2") || Input.GetAxis("Fire1p2") > 0.9f) && canFire)
+		else if (player == 1 && ( Input.GetButton("AFire1p2") || Mathf.Abs(Input.GetAxis("AFire1p2")) > 0.5f) && canFire)
 		{
 			fire();
 		}
+        */
     }
 
     private void fire()
