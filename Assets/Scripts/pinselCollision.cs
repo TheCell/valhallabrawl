@@ -20,7 +20,7 @@ public class pinselCollision : MonoBehaviour {
 		else if (collision.gameObject.tag == "boundary")
 		{
 			gameObject.SetActive(false);
-			print("pinsel hat deathsphere erreicht");
+			print("speer hat deathsphere erreicht");
 		}
 	}
 
