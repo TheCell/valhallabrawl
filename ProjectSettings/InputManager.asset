@@ -15,22 +15,6 @@ InputManager:
     altPositiveButton: 
     gravity: 3
     dead: 0.001
-    sensitivity: 0.5
-    snap: 1
-    invert: 0
-    type: 1
-    axis: 0
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: Horizontalp1
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: a
-    positiveButton: d
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 3
-    dead: 0.001
     sensitivity: 3
     snap: 1
     invert: 0
@@ -228,6 +212,22 @@ InputManager:
     invert: 1
     type: 2
     axis: 3
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: HorizontalViewp1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 1
+    axis: 0
     joyNum: 1
   - serializedVersion: 3
     m_Name: Horizontalp2
@@ -435,5 +435,21 @@ InputManager:
     snap: 0
     invert: 1
     type: 2
+    axis: 2
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Fire1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: mouse 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 0
     axis: 2
     joyNum: 1
