@@ -233,7 +233,7 @@ public class playerControlls : MonoBehaviour {
                 canFire = true;
             }
 
-            if ((Input.GetButton("Fire1p1") || Mathf.Abs(Input.GetAxis("Fire1p1")) > 0.5f) && canFire)
+            if ((Input.GetButton("Fire1") || Input.GetButton("Fire1p1") || Mathf.Abs(Input.GetAxis("Fire1p1")) > 0.5f) && canFire)
             {
                 fire();
             }
