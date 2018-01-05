@@ -11,7 +11,7 @@ public class playerUI : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        writePoints(gameObject.GetComponent<Movement>().player);
+        writePoints(gameObject.GetComponent<playerControlls>().player);
     }
 
     // Update is called once per frame

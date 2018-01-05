@@ -20,7 +20,7 @@ public class deathTrigger : MonoBehaviour {
                 if (player != collision.gameObject)
                 {
                     Debug.Log(player);
-                    player.GetComponent<playerUI>().increasePointsCounter(player.GetComponent<Movement>().player);
+                    player.GetComponent<playerUI>().increasePointsCounter(player.GetComponent<playerControlls>().player);
                 }
 
 				// check if player has 3 points and finish game
