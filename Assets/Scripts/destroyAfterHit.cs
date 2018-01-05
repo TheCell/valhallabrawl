@@ -37,5 +37,6 @@ public class destroyAfterHit : MonoBehaviour
 
 		tile.GetComponent<Renderer>().material = afterDestroy;
 		tile.GetComponent<Collider>().isTrigger = true;
-	}
+        tile.GetComponent<Renderer>().enabled = false;
+    }
 }
