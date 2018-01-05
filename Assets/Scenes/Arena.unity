@@ -10032,6 +10032,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95703565636522216, guid: 179017ed7a5d0c14ca667d38bb3654c3,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95703565636522216, guid: 179017ed7a5d0c14ca667d38bb3654c3,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 179017ed7a5d0c14ca667d38bb3654c3, type: 2}
   m_IsPrefabParent: 0
@@ -16782,6 +16792,16 @@ Prefab:
         type: 2}
       propertyPath: m_Center.y
       value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 95121459034817548, guid: 81aa76cc2bb05b34588c849f398ce3d7,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95121459034817548, guid: 81aa76cc2bb05b34588c849f398ce3d7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81aa76cc2bb05b34588c849f398ce3d7, type: 2}

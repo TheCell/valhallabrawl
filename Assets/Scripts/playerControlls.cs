@@ -54,11 +54,14 @@ public class playerControlls : MonoBehaviour {
     private float lastShot = 0.0f;
     private bool canFire = true;
     private int controllerNumber = 99;
-
-
+    //Animations
+    int attackingHash = Animator.StringToHash("Attacking");
+    int walkingHash = Animator.StringToHash("Walking");
+    Animator playerAnimator;
     // Use this for initialization
     void Start()
     {
+        playerAnimator = gameObject.GetComponent<Animator>();
         /* alternativ controller Input
          * Checks which controllers are connected
          * sets the two connected controllres to 1 and 2
@@ -138,6 +141,7 @@ public class playerControlls : MonoBehaviour {
         }
 
         pinselEnumerator = pinselPool.GetEnumerator();
+        pinselSpawn.position = new Vector3(pinselSpawn.position.x, pinselSpawn.position.y - 1, pinselSpawn.position.z - 1);
     }
 
     void FixedUpdate()
@@ -236,6 +240,10 @@ public class playerControlls : MonoBehaviour {
             if ((Input.GetButton("Fire1") || Input.GetButton("Fire1p1") || Mathf.Abs(Input.GetAxis("Fire1p1")) > 0.5f) && canFire)
             {
                 fire();
+            }else if(Mathf.Abs(Input.GetAxis("Fire1p1")) < 0.1f)
+            {
+                playerAnimator.SetTrigger(walkingHash);
+                playerAnimator.ResetTrigger(attackingHash);
             }
         }
         else if (player == 1)
@@ -289,6 +297,11 @@ public class playerControlls : MonoBehaviour {
             if ((Input.GetButton("Fire1p2") || Mathf.Abs(Input.GetAxis("Fire1p2")) > 0.5f) && canFire)
             {
                 fire();
+            }
+            else if (Mathf.Abs(Input.GetAxis("Fire1p2")) < 0.1f)
+            {
+                playerAnimator.SetTrigger(walkingHash);
+                playerAnimator.ResetTrigger(attackingHash);
             }
         }
 
@@ -372,6 +385,9 @@ public class playerControlls : MonoBehaviour {
 
     private void fire()
     {
+        playerAnimator.SetTrigger(attackingHash);
+        playerAnimator.ResetTrigger(walkingHash);
+        Debug.Log("fire");
         canFire = false;
         lastShot = Time.realtimeSinceStartup;
 
@@ -398,7 +414,7 @@ public class playerControlls : MonoBehaviour {
         if (pinselEnumerator.Current != null)
         {
             GameObject currentPinsel = pinselEnumerator.Current;
-            currentPinsel.transform.position = pinselSpawn.position;
+            currentPinsel.transform.position = pinselSpawn.position;            
             currentPinsel.transform.rotation = cameraObject.transform.rotation;
             currentPinsel.SetActive(true);
 
