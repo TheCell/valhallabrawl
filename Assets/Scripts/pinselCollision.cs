@@ -16,8 +16,9 @@ public class pinselCollision : MonoBehaviour {
         if (collision.gameObject.tag == "Hexagon")
         {
 			collision.gameObject.GetComponent<destroyAfterHit>().killyourself(timerBeforeKill);
-            Instantiate(particle, transform.position, Quaternion.identity);
-			
+            GameObject particles = Instantiate(particle, transform.position, Quaternion.identity);
+
+            Destroy(particles, 0.5f);
 			gameObject.SetActive(false);
 		}
 		else if (collision.gameObject.tag == "boundary")
