@@ -80,11 +80,9 @@ public class AssembleArena : MonoBehaviour
                 float momentPos = (currentTime - (startTime + startDelaySeconds));
                 float posToReach = (assemblyTimeSeconds);
                 currentPos = momentPos / posToReach;
-                Debug.Log("momentPos: " + momentPos + " posToReach: " + posToReach + " isCalculated: " + currentPos);
+                // Debug.Log("momentPos: " + momentPos + " posToReach: " + posToReach + " isCalculated: " + currentPos);
             }
         }
-
-        Debug.Log(currentPos);
 
         for (int i = 0; i < meshfilters.Length; i++)
         {

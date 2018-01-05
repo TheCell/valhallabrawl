@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class pinselCollision : MonoBehaviour {
     public float timerBeforeKill = 0.5f;
+    public GameObject particle;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
 	}
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Hexagon")
         {
 			collision.gameObject.GetComponent<destroyAfterHit>().killyourself(timerBeforeKill);
+            Instantiate(particle, transform.position, Quaternion.identity);
 			
 			gameObject.SetActive(false);
 		}
