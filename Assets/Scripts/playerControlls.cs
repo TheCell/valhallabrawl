@@ -40,6 +40,10 @@ public class playerControlls : MonoBehaviour {
     public int player = 0;
     private Vector3 playerInput = new Vector3(0, 0, 0);
 
+    // sounds
+    public AudioClip jump;
+    private AudioSource musicSource;
+
     //controller
     public static int usedController = 99;
     /**
@@ -109,6 +113,7 @@ public class playerControlls : MonoBehaviour {
         */
         rigidb = GetComponent<Rigidbody>();
         coll = GetComponent<BoxCollider>();
+        musicSource = GetComponent<AudioSource>();
 
         myNormal = transform.up; // normal starts as character up direction 
         myTransform = transform;
@@ -187,6 +192,8 @@ public class playerControlls : MonoBehaviour {
 				rigidb.velocity += jumpSpeed * myNormal;
 			}
 			*/
+            musicSource.clip = jump;
+            musicSource.Play();
             rigidb.velocity += jumpSpeed * myNormal;
         }
 
