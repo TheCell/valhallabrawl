@@ -34,6 +34,7 @@ public class Movement : MonoBehaviour
 	// Game Objects
 	public GameObject playerObject;
 	public GameObject cameraObject;
+    private Transform cameraObjectOriginTransform;
 	private Rigidbody rigidb;
 	private Transform myTransform;
 	public BoxCollider coll;

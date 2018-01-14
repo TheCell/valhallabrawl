@@ -28,12 +28,13 @@ public class playerControlls : MonoBehaviour {
     private int cameraAccelerationSpeed = 7;
     private float minRotationDegree = -45;
     private float maxRotationDegree = 45;
-    private float minRotation = -0.6f;
-    private float maxRotation = 0.6f;
+    private float minRotation = -0.5f;
+    private float maxRotation = 0.18f;
 
     // Game Objects
     public GameObject playerObject;
     public GameObject cameraObject;
+    private Vector3 cameraLocalOriginVector;
     private Rigidbody rigidb;
     private Transform myTransform;
     public BoxCollider coll;
@@ -65,6 +66,7 @@ public class playerControlls : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        cameraLocalOriginVector = cameraObject.transform.localPosition;
         playerAnimator = gameObject.GetComponent<Animator>();
         /* alternativ controller Input
          * Checks which controllers are connected
@@ -218,14 +220,38 @@ public class playerControlls : MonoBehaviour {
             }
 
             // limit looking up and down
+            //looking down
             if (cameraObject.transform.localRotation.x < maxRotation && Input.GetAxis("VerticalViewp1") > 0)
             {
                 cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
             }
+            //looking up            
             else if (cameraObject.transform.localRotation.x > minRotation && Input.GetAxis("VerticalViewp1") < 0)
             {
                 cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp1") * cameraRotationSpeed, 0, 0));
             }
+            if (cameraObject.transform.localRotation.x <= -0.2 && Input.GetAxis("VerticalViewp1") < 0)
+            {
+                if (cameraObject.transform.localPosition.x > 2.215545 && cameraObject.transform.localPosition.y > -1.52335)
+                {
+                    cameraObject.transform.localPosition = new Vector3(cameraObject.transform.localPosition.x - 0.1f * Mathf.Abs(Input.GetAxis("VerticalViewp1")), cameraObject.transform.localPosition.y - 0.05f * Mathf.Abs(Input.GetAxis("VerticalViewp1")), cameraObject.transform.localPosition.z);
+                }
+            }
+            else /*if (cameraObject.transform.localRotation.x <= -0.3 && cameraObject.transform.localRotation.x >= -0.5 && Input.GetAxis("VerticalViewp1") > 0)*/
+            {
+                if (cameraObject.transform.localPosition.x < cameraLocalOriginVector.x) {
+                    cameraObject.transform.localPosition = new Vector3(cameraObject.transform.localPosition.x + 0.09f * Mathf.Abs(Input.GetAxis("VerticalViewp1")), cameraObject.transform.localPosition.y, cameraObject.transform.localPosition.z);
+                }
+                if(cameraObject.transform.localPosition.y < cameraLocalOriginVector.y)
+                {
+                    cameraObject.transform.localPosition = new Vector3(cameraObject.transform.localPosition.x, cameraObject.transform.localPosition.y + 0.05f * Mathf.Abs(Input.GetAxis("VerticalViewp1")), cameraObject.transform.localPosition.z);
+                }
+
+            }
+           /* if(cameraObject.transform.localRotation.x > -0.1 && cameraObject.transform.localRotation.x < 0.1 && Input.GetAxis("VerticalViewp1") > 0.1 && Input.GetAxis("VerticalViewp1") > -0.1)
+            {
+                cameraObject.transform.localPosition = cameraLocalOriginVector;
+            }*/
 
             //turn Camera/Player Horizontal
             /*
@@ -275,15 +301,35 @@ public class playerControlls : MonoBehaviour {
 
             //turn Camera Vertical
             // limit looking up and down
+            //looking down
             if (cameraObject.transform.localRotation.x < maxRotation && Input.GetAxis("VerticalViewp2") > 0)
             {
                 cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
             }
+            //looking up            
             else if (cameraObject.transform.localRotation.x > minRotation && Input.GetAxis("VerticalViewp2") < 0)
             {
                 cameraObject.transform.Rotate(new Vector3(Input.GetAxis("VerticalViewp2") * cameraRotationSpeed, 0, 0));
             }
+            if (cameraObject.transform.localRotation.x <= -0.2 && Input.GetAxis("VerticalViewp2") < 0)
+            {
+                if (cameraObject.transform.localPosition.x > 2.215545 && cameraObject.transform.localPosition.y > -1.52335)
+                {
+                    cameraObject.transform.localPosition = new Vector3(cameraObject.transform.localPosition.x - 0.1f * Mathf.Abs(Input.GetAxis("VerticalViewp2")), cameraObject.transform.localPosition.y - 0.05f * Mathf.Abs(Input.GetAxis("VerticalViewp2")), cameraObject.transform.localPosition.z);
+                }
+            }
+            else /*if (cameraObject.transform.localRotation.x <= -0.3 && cameraObject.transform.localRotation.x >= -0.5 && Input.GetAxis("VerticalViewp1") > 0)*/
+            {
+                if (cameraObject.transform.localPosition.x < cameraLocalOriginVector.x)
+                {
+                    cameraObject.transform.localPosition = new Vector3(cameraObject.transform.localPosition.x + 0.09f * Mathf.Abs(Input.GetAxis("VerticalViewp2")), cameraObject.transform.localPosition.y, cameraObject.transform.localPosition.z);
+                }
+                if (cameraObject.transform.localPosition.y < cameraLocalOriginVector.y)
+                {
+                    cameraObject.transform.localPosition = new Vector3(cameraObject.transform.localPosition.x, cameraObject.transform.localPosition.y + 0.05f * Mathf.Abs(Input.GetAxis("VerticalViewp2")), cameraObject.transform.localPosition.z);
+                }
 
+            }
             //turn Camera/Player Horizontal
             /*
 			if (Input.GetAxis("Horizontalp2") == 0)
@@ -394,7 +440,6 @@ public class playerControlls : MonoBehaviour {
     {
         playerAnimator.SetTrigger(attackingHash);
         playerAnimator.ResetTrigger(walkingHash);
-        Debug.Log("fire");
         canFire = false;
         lastShot = Time.realtimeSinceStartup;
 
