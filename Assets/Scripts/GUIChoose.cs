@@ -18,14 +18,17 @@ public class GUIChoose : MonoBehaviour {
 		else if (Input.GetAxis("CrossUpDown") < 0)
 		{
 			GetComponent<QuitApplication>().Quit();
+            enabled = false;
 		}
 		else if (Input.GetAxis("CrossLeftRight") < 0)
 		{
 			GetComponent<StartOptions>().startMap1();
+            enabled = false;
         }
         else if (Input.GetAxis("CrossLeftRight") > 0)
         {
 			GetComponent<StartOptions>().startMap2();
+            enabled = false;
         }
     }
 }

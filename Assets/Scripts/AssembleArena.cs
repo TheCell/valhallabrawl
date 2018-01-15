@@ -22,6 +22,11 @@ public class AssembleArena : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            player.GetComponent<playerControlls>().enabled = false;
+        }
+
         meshfilters = gameObject.GetComponentsInChildren<MeshFilter>();
 
         foreach (MeshFilter meshfilter in meshfilters)
@@ -65,6 +70,10 @@ public class AssembleArena : MonoBehaviour
 
         if (startTime + assemblyTimeSeconds + startDelaySeconds < currentTime)
         {
+            foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                player.GetComponent<playerControlls>().enabled = true;
+            }
             finished = true;
         }
         // gameObject.GetComponent<Transform>().position = position;

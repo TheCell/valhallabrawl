@@ -6440,7 +6440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assemblyTimeSeconds: 1
-  startDelaySeconds: 0
+  startDelaySeconds: 1
 --- !u!4 &175817056
 Transform:
   m_ObjectHideFlags: 0
@@ -55465,7 +55465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assemblyTimeSeconds: 1
-  startDelaySeconds: 0
+  startDelaySeconds: 1
 --- !u!4 &1729197096
 Transform:
   m_ObjectHideFlags: 0
