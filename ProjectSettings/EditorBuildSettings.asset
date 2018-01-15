@@ -7,10 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/gameMenu.unity
-    guid: 006aa3ec4ae746c4d83b7d956c34ccb1
   - enabled: 1
     path: Assets/Scenes/Arena.unity
-    guid: 18ff8ae766c647a4397eadf7f226deb1
   - enabled: 1
     path: Assets/Scenes/gameEndscreen.unity
-    guid: 1662b78d65817ef4d9f04e71f4c54aea
+  - enabled: 1
+    path: Assets/Scenes/Arena2.unity
