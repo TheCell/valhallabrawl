@@ -34,6 +34,19 @@ public class StartOptions : MonoBehaviour {
 		playMusic = GetComponent<PlayMusic> ();
 	}
 
+	public void startMap1()
+	{
+		Debug.Log("juss");
+		sceneToStart = 1;
+		StartButtonClicked();
+	}
+
+	public void startMap2()
+	{
+		Debug.Log("juss");
+		sceneToStart = 3;
+		StartButtonClicked();
+	}
 
 	public void StartButtonClicked()
 	{
