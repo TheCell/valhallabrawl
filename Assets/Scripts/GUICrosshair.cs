@@ -10,8 +10,8 @@ public class GUICrosshair : MonoBehaviour {
 
     void Start()
     {
-        position = new Rect((Screen.width/2 + crosshairTexture.width/2) / 2, (Screen.height) / 2 + 25, crosshairTexture.width, crosshairTexture.height);
-        position2 = new Rect((Screen.width + Screen.width/2 + crosshairTexture.width/2) / 2, (Screen.height) / 2 + 25, crosshairTexture.width, crosshairTexture.height);
+        position = new Rect((Screen.width/2 + crosshairTexture.width/2) / 2, (Screen.height) / 2 + 5, crosshairTexture.width, crosshairTexture.height);
+        position2 = new Rect((Screen.width + Screen.width/2 + crosshairTexture.width/2) / 2, (Screen.height) / 2 + 5, crosshairTexture.width, crosshairTexture.height);
     }
 
     void OnGUI()
