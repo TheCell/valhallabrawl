@@ -17,7 +17,7 @@ public class GUIChoose : MonoBehaviour {
 		}
 		else if (Input.GetAxis("CrossUpDown") < 0)
 		{
-			Debug.Log("down");
+			GetComponent<QuitApplication>().Quit();
 		}
 		else if (Input.GetAxis("CrossLeftRight") < 0)
 		{
