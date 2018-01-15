@@ -37,7 +37,14 @@ public class deathTrigger : MonoBehaviour {
 			}
 			else
 			{
-				SceneManager.LoadScene("Arena", LoadSceneMode.Single);
+                if (SceneManager.GetActiveScene().name == "Arena2")
+                {
+                    SceneManager.LoadScene("Arena2", LoadSceneMode.Single);
+                }
+                else
+                {
+                    SceneManager.LoadScene("Arena", LoadSceneMode.Single);
+                }
 			}
         }         
       }
