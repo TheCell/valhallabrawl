@@ -937,6 +937,10 @@ Prefab:
       propertyPath: m_FontData.m_MinSize
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1996063083807124, guid: 1a114c8ebede50941931e22256eff806, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a114c8ebede50941931e22256eff806, type: 2}
   m_IsPrefabParent: 0
@@ -16587,6 +16591,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1897608971316646, guid: 68ef2efbda4ed224589ce8ccfefc44b8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68ef2efbda4ed224589ce8ccfefc44b8, type: 2}
   m_IsPrefabParent: 0
@@ -18714,6 +18722,10 @@ Prefab:
     - target: {fileID: 114522164952256106, guid: d048ecbefc9ae1b438504d0150aeb208,
         type: 2}
       propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091752690092880, guid: d048ecbefc9ae1b438504d0150aeb208, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
